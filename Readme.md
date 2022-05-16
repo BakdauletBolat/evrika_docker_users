@@ -20,7 +20,7 @@ cd evrika_docker_users
 
 Поднять сервер с помощью docker-compose
 ```sh
-docker-compose up --build
+docker compose up --build
 ```
 
 Создание необходимых миграций
