@@ -13,6 +13,11 @@
 git clone https://github.com/BakdauletBolat/evrika_docker_users.git
 ```
 
+Перейти в папку
+```sh
+cd evrika_docker_users
+```
+
 Поднять сервер с помощью docker-compose
 ```sh
 docker-compose up --build
