@@ -124,7 +124,7 @@ http://127.0.0.1/api/users/create/   METHOD "POST"
 {
     "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2ODI5MDU3NCwiaWF0IjoxNjUyNzM4NTc0LCJqdGkiOiIxYTYxZWNlZTIxNWE0MzAwOTk2OGVlZGRmZmJkMzVkMyIsInVzZXJfaWQiOjF9.lQb9zEty15FcdUe_YABHUccPZjSlBbI_UOyROy6xst8"
     "acsess": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4MjkwNTc0LCJpYXQiOjE2NTI3Mzg1NzQsImp0aSI6ImQ4MDBhYjc0ZGQzZDQ4MjNiZmI0ZDViM2VkMTlhMmNhIiwidXNlcl9pZCI6MX0.uMy2BzAg34NzpRWaOC-yKgN8fjssRG-citV06Yewan8",
-    "user_id": 2
+    "id": 2
 }
 ```
 
