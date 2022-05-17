@@ -18,29 +18,26 @@ git clone https://github.com/BakdauletBolat/evrika_docker_users.git
 cd evrika_docker_users
 ```
 
-Сделать сборку проекта
+Сначало нужно поднять MySql базу данных и сервер 50-180секунд
 ```sh
-docker-compose build
+docker-compose up --build
 ```
 
-Сначало нужно поднять MySql базу данных
-```sh
-docker-compose up db
-```
-
-Поднять Django сервер
-```sh
-docker-compose up web
-```
-
+#### Для exec команд сервер должен быть включенным
+---
 Создание необходимых миграций
 ```sh
-docker-compose web exec python manage.py migrate
+docker-compose exec web python manage.py migrate
 ```
 
-Создание учетная запись пользователя admin
+Создание учетную запись пользователя admin
 ```sh
-docker-compose web exec python manage.py createsuperuser
+docker-compose exec web python manage.py createsuperuser
+```
+
+После миграций и создание учетного записа admin-(a) перезапускаем сервер
+```sh
+docker-compose up --build
 ```
 
 Сервер запуститься на локальном сервере по адресу http://127.0.0.1/ 
