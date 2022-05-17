@@ -18,7 +18,7 @@ git clone https://github.com/BakdauletBolat/evrika_docker_users.git
 cd evrika_docker_users
 ```
 
-Сначало нужно поднять MySql базу данных и сервер 50-180секунд
+Сначало нужно поднять MySql базу данных и сервер 50-300секунд зависит от скорости интернета
 ```sh
 docker-compose up --build
 ```
