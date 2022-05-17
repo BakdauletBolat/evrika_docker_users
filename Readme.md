@@ -35,7 +35,7 @@ docker-compose exec web python manage.py migrate
 docker-compose exec web python manage.py createsuperuser
 ```
 
-После миграций и создание учетного записа admin-(a) перезапускаем сервер
+После миграций и создание учетного записа admin-(a) перезапускаем сервер (занимает 30 секунд)
 ```sh
 docker-compose up
 ```
