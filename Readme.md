@@ -30,14 +30,14 @@ docker-compose up --build
 docker-compose exec web python manage.py migrate
 ```
 
-Создание учетную запись пользователя admin
+Создать учетную запись пользователя admin
 ```sh
 docker-compose exec web python manage.py createsuperuser
 ```
 
 После миграций и создание учетного записа admin-(a) перезапускаем сервер
 ```sh
-docker-compose up --build
+docker-compose up
 ```
 
 Сервер запуститься на локальном сервере по адресу http://127.0.0.1/ 
