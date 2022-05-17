@@ -18,9 +18,19 @@ git clone https://github.com/BakdauletBolat/evrika_docker_users.git
 cd evrika_docker_users
 ```
 
-Поднять сервер с помощью docker-compose
+Сделать сборку проекта
 ```sh
-docker compose up --build
+docker-compose build
+```
+
+Сначало нужно поднять MySql базу данных
+```sh
+docker-compose up db
+```
+
+Поднять Django сервер
+```sh
+docker-compose up web
 ```
 
 Создание необходимых миграций
