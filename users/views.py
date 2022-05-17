@@ -14,11 +14,16 @@ class UserCreateAPIView(CreateAPIView):
 
     permission_classes = [IsAdminUser]
 
+    def perform_create(self, serializer):
+        return serializer.save()
+
     def create(self, request, *args, **kwargs):
         
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+        
         user = self.perform_create(serializer)
+        print(user)
         data = get_tokens_for_user(user)
 
         headers = self.get_success_headers(data)

@@ -8,5 +8,5 @@ def get_tokens_for_user(user: User):
     return {
          'access': str(refresh.access_token),
         'refresh': str(refresh),
-        'user_id': UserSerializer(user).data['id']
+        'id': user.id
     }
