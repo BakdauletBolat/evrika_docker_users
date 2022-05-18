@@ -57,3 +57,5 @@ target/
 .ropeproject
 
 conf.py
+staticfiles/
+staticfiles
