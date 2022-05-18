@@ -1,8 +1,10 @@
 # Тестовое задание
 
-Документация состоит из двух частей
+Документация состоит из 4 частей
 - 1) Инструкция по установке Docker
-- 2) Использование Сервер API 
+- 2) Документация
+- 3) Использование Сервер API 
+- 4) Тесты
 
 ## 1) Инструкция по установке Docker
 
@@ -42,7 +44,12 @@ docker-compose up
 
 Сервер запуститься на локальном сервере по адресу http://127.0.0.1/ 
 
-## 2) Использование Сервер API 
+
+
+## 2) Документация в главном URL http://127.0.0.1
+
+
+## 3) Использование Сервер API 
 
 Средства разработки: Python
 Framework: Django
@@ -54,11 +61,13 @@ Framework: Django
 | http://127.0.0.1/api/users/sign-in/ | Авторизация | `user` |
 | http://127.0.0.1/api/users/create/ | Добавление нового пользователя | `admin` |
 | http://127.0.0.1/api/users/{id}/ | Получение информации о пользователе | `user` |
-| http://127.0.0.1/api/users/{id}/update/ |Изменение статуса пользователя (Online, Offline) |  `admin` |
+| http://127.0.0.1/api/users/update/ |Изменение статуса пользователя (Online, Offline) |  `admin` |
 | http://127.0.0.1/api/users/ | Получение списка пользователей |  `user` |
 
 
 ### Все CRUD операций доступно в Postman по ссылке **[Посмотреть](https://www.postman.com/mission-observer-91554771/workspace/evrikausers/collection/15610246-c85daf6d-ad31-4c8c-ba28-fbe63249afeb?action=share&creator=15610246)**
+
+
 
 ## Авторизация 
 ---
@@ -75,8 +84,13 @@ JWT авторизация для добавление нового пользо
 
 ```sh
 {
-    "email": "admin@gmail.com",
-    "password": 123
+  "data": {
+      "type": "TokenObtainPairView",
+      "attributes": {
+          "password": "123",
+           "email": "admin@gmail.com"
+      }   
+  }
 }
 ```
 
@@ -86,8 +100,10 @@ JWT авторизация для добавление нового пользо
 
 ```sh
 {
-    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2ODI5MDU3NCwiaWF0IjoxNjUyNzM4NTc0LCJqdGkiOiIxYTYxZWNlZTIxNWE0MzAwOTk2OGVlZGRmZmJkMzVkMyIsInVzZXJfaWQiOjF9.lQb9zEty15FcdUe_YABHUccPZjSlBbI_UOyROy6xst8"
-    "acsess": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4MjkwNTc0LCJpYXQiOjE2NTI3Mzg1NzQsImp0aSI6ImQ4MDBhYjc0ZGQzZDQ4MjNiZmI0ZDViM2VkMTlhMmNhIiwidXNlcl9pZCI6MX0.uMy2BzAg34NzpRWaOC-yKgN8fjssRG-citV06Yewan8",
+    "data": {
+        "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2ODQwODA3NSwiaWF0IjoxNjUyODU2MDc1LCJqdGkiOiI2YmY2YzUzNGYzYjY0N2FlYTk2YzNkYTg3ZTA1MTIxMCIsInVzZXJfaWQiOjF9.YxnlxAO8B9iNWzrhHP-vHIFrRcUD7YeK4EOhwj-TNGg",
+        "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4NDA4MDc1LCJpYXQiOjE2NTI4NTYwNzUsImp0aSI6IjIyZjE0Y2RlYjAwMzQ0ZDlhOTM1ZGZmMzk0ZTM5N2QxIiwidXNlcl9pZCI6MX0.mNGt_r2ODbIt0j7GYNtDX_IvwJmHBV3S_wRTPlYPups"
+    }
 }
 ```
 
@@ -101,18 +117,22 @@ http://127.0.0.1/api/users/create/   METHOD "POST"
 ---
 #### Тело запроса (body)
 
-Принимает 3 обязательных параметра `email`  `password` `username` 
-Также 2 не обязательных параметра `phone` `status` 
+Принимает 3 обязательных атрибута `email`  `password` `username` 
+Также 2 не обязательных атрибута `phone` `status` 
 `status` по умолчанию равно `Offline`
 
 Пример:
 
 ```sh
 {
-    "email": "bakosh21345@gmail.com",
-    "password": "secretkey",
-    "username": "bakdaulet",
-    "phone": "8777 777 77 77"
+  "data": {
+      "type": "User",
+      "attributes": {
+        "username": "bakdaulet",
+        "email": "asasdaadasdsaasdsddddd@daasdasddasаgmail.com",
+        "password": "123"
+      }   
+  }
 }
 ```
 
@@ -122,9 +142,11 @@ http://127.0.0.1/api/users/create/   METHOD "POST"
 
 ```sh
 {
-    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2ODI5MDU3NCwiaWF0IjoxNjUyNzM4NTc0LCJqdGkiOiIxYTYxZWNlZTIxNWE0MzAwOTk2OGVlZGRmZmJkMzVkMyIsInVzZXJfaWQiOjF9.lQb9zEty15FcdUe_YABHUccPZjSlBbI_UOyROy6xst8"
-    "acsess": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4MjkwNTc0LCJpYXQiOjE2NTI3Mzg1NzQsImp0aSI6ImQ4MDBhYjc0ZGQzZDQ4MjNiZmI0ZDViM2VkMTlhMmNhIiwidXNlcl9pZCI6MX0.uMy2BzAg34NzpRWaOC-yKgN8fjssRG-citV06Yewan8",
-    "id": 2
+    "data": {
+        "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4NDA3OTgyLCJpYXQiOjE2NTI4NTU5ODIsImp0aSI6IjgyOWExYWE1NTIzYTQyNDg4MzYyZTE1YjY3N2Q3Y2QxIiwidXNlcl9pZCI6MzZ9.7gDnWTbdOFWOeyCTl8iKDNJLzOENGIzNwtxL7rylWKU",
+        "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2ODQwNzk4MiwiaWF0IjoxNjUyODU1OTgyLCJqdGkiOiIwZDhhMDA3OGY3ODY0NThhOWM5NDA1YTYxMzBmZmI4MSIsInVzZXJfaWQiOjM2fQ.pBKYeUX2-G7yGqOWHFk5cUvIoOWP0qBirIT8BTGPom0",
+        "id": 36
+    }
 }
 ```
 
@@ -144,23 +166,27 @@ http://127.0.0.1/api/users/{id}/   METHOD "GET"
 
 ```sh
 {
-    "id": 2,
-    "email": "bakosh21345@gmail.com",
-    "status":"Offline",
-    "phone": "8777 777 77 77",
-    "username": "bakdaulet"
+    "data": {
+        "type": "User",
+        "id": "3",
+        "attributes": {
+            "phone": null,
+            "username": "b2",
+            "email": "admin3@gmail.com",
+            "status": "Offline"
+        }
+    }
 }
 ```
 
 ## Изменение статуса пользователя (Online, Offline)
 ---
 ```sh
-http://127.0.0.1/api/users/{id}/update/   METHOD "PATCH" или "PUT"
+http://127.0.0.1/api/users/update/   METHOD "PATCH" или "PUT"
 ```
 
-Для изменение статуса пользователе передаем в адресном строке уникальный `id` 
-
 #### Тело запроса (body)
+Для изменение статуса пользователе передаем `id` 
 Принимает 1 обязательный параметр `status`
 - `status` может быть `Offline` или `Online`
 
@@ -169,7 +195,13 @@ http://127.0.0.1/api/users/{id}/update/   METHOD "PATCH" или "PUT"
 
 ```sh
 {
-    "status":"Online"
+    "data": {
+        "type": "User",
+        "id": 3,
+        "attributes": {
+            "status": "Offline"
+        }
+    }
 }
 ```
 
@@ -177,8 +209,13 @@ http://127.0.0.1/api/users/{id}/update/   METHOD "PATCH" или "PUT"
 
 ```sh
 {
-    "id": 2,
-    "status":"Status changed from Offline to Online"
+    "data": {
+        "type": "User",
+        "id": "3",
+        "attributes": {
+            "status": "Status changed from Offline to Offline"
+        }
+    }
 }
 ```
 
@@ -194,27 +231,129 @@ http://127.0.0.1/api/users/  METHOD "GET"
 
 ```sh
 {
-    "count": 1,
-    "next": null,
-    "previous": null,
-    "results": [
+    "links": {
+        "first": "http://127.0.0.1:8000/api/users/?page%5Bnumber%5D=1",
+        "last": "http://127.0.0.1:8000/api/users/?page%5Bnumber%5D=4",
+        "next": "http://127.0.0.1:8000/api/users/?page%5Bnumber%5D=2",
+        "prev": null
+    },
+    "data": [
         {
-            "id": 1,
-            "phone": null,
-            "username": "admin",
-            "email": "admin@gmail.com",
-            "status": "Online"
+            "type": "User",
+            "id": "1",
+            "attributes": {
+                "phone": null,
+                "username": "bakdaulet",
+                "email": "admin@gmail.com",
+                "status": "Online"
+            }
         },
         {
-            "id": 2,
-            "phone": "8705555555",
-            "username": "bakdaulet",
-            "email": "bbb@gmail.com",
-            "status": "Offline"
+            "type": "User",
+            "id": "2",
+            "attributes": {
+                "phone": null,
+                "username": "bakdaulet",
+                "email": "bakdaulet@gmail.com",
+                "status": "Offline"
+            }
+        },
+        {
+            "type": "User",
+            "id": "3",
+            "attributes": {
+                "phone": null,
+                "username": "b2",
+                "email": "admin3@gmail.com",
+                "status": "Offline"
+            }
+        },
+        {
+            "type": "User",
+            "id": "4",
+            "attributes": {
+                "phone": null,
+                "username": "b2",
+                "email": "admin2@gmail.com",
+                "status": "Offline"
+            }
+        },
+        {
+            "type": "User",
+            "id": "5",
+            "attributes": {
+                "phone": null,
+                "username": "bakdaulet",
+                "email": "bakdaulet2@gmail.com",
+                "status": "Offline"
+            }
+        },
+        {
+            "type": "User",
+            "id": "6",
+            "attributes": {
+                "phone": null,
+                "username": "bakdaulet",
+                "email": "bakdaulet3@gmail.com",
+                "status": "Offline"
+            }
+        },
+        {
+            "type": "User",
+            "id": "7",
+            "attributes": {
+                "phone": null,
+                "username": "bakdaulet",
+                "email": "bakdaulet4@gmail.com",
+                "status": "Offline"
+            }
+        },
+        {
+            "type": "User",
+            "id": "8",
+            "attributes": {
+                "phone": null,
+                "username": "bakdaulet",
+                "email": "bakdaulet5@gmail.com",
+                "status": "Offline"
+            }
+        },
+        {
+            "type": "User",
+            "id": "9",
+            "attributes": {
+                "phone": null,
+                "username": "bakdaulet",
+                "email": "bakdaulet7@gmail.com",
+                "status": "Offline"
+            }
+        },
+        {
+            "type": "User",
+            "id": "10",
+            "attributes": {
+                "phone": null,
+                "username": "bbb",
+                "email": "bakasda@gmail.com",
+                "status": "Offline"
+            }
         }
-    ]
+    ],
+    "meta": {
+        "pagination": {
+            "page": 1,
+            "pages": 4,
+            "count": 34
+        }
+    }
 }
 ```
+
+###  4) Для теста запускаем команду
+```sh
+docker-compose exec web python manage.py test
+```
+
 
 
 
