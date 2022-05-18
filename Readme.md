@@ -61,7 +61,7 @@ Framework: Django
 | http://127.0.0.1/api/users/sign-in/ | Авторизация | `user` |
 | http://127.0.0.1/api/users/create/ | Добавление нового пользователя | `admin` |
 | http://127.0.0.1/api/users/{id}/ | Получение информации о пользователе | `user` |
-| http://127.0.0.1/api/users/{id}/update/ |Изменение статуса пользователя (Online, Offline) |  `admin` |
+| http://127.0.0.1/api/users/update/ |Изменение статуса пользователя (Online, Offline) |  `admin` |
 | http://127.0.0.1/api/users/ | Получение списка пользователей |  `user` |
 
 
@@ -182,12 +182,11 @@ http://127.0.0.1/api/users/{id}/   METHOD "GET"
 ## Изменение статуса пользователя (Online, Offline)
 ---
 ```sh
-http://127.0.0.1/api/users/{id}/update/   METHOD "PATCH" или "PUT"
+http://127.0.0.1/api/users/update/   METHOD "PATCH" или "PUT"
 ```
 
-Для изменение статуса пользователе передаем в адресном строке уникальный `id` 
-
 #### Тело запроса (body)
+Для изменение статуса пользователе передаем `id` 
 Принимает 1 обязательный параметр `status`
 - `status` может быть `Offline` или `Online`
 
