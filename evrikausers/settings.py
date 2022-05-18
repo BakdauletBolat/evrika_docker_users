@@ -173,11 +173,8 @@ REST_FRAMEWORK = {
 
 SWAGGER_SETTINGS = {
    'SECURITY_DEFINITIONS': {
-        'Bearer': {
-            'type': 'apiKey',
-            'name': 'Authorization',
-            'in': 'header'
-        }
+        'Bearer': { "type": "apiKey",'in': 'Bearer <place here you access token>',
+            'name': 'Authorization',"value": 'Bearer' }
     },
     'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg_json_api.inspectors.SwaggerAutoSchema',  # Overridden
 
