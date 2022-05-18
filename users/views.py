@@ -48,9 +48,15 @@ class UserUpdateAPIView(UpdateAPIView):
     permission_classes = [IsAdminUser]
     queryset = User.objects.all()
     serializer_class = UserStatusChangeSerializer
+    lookup_field = None
+
+    def get_object(self):
+        
+        obj = User.objects.get(id=self.request.data.get('id'))
+
+        return obj
 
     def update(self, request, *args, **kwargs):
-
         if request.data.get('status') == None:
             return Response({'error': 'You submitted incorrect data'})
         partial = kwargs.pop('partial', False)

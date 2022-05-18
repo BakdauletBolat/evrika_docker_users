@@ -24,7 +24,13 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username','password']
 
+    
+
     objects = UserManager()
+
+    def change_status(self,status):
+        self.status = status
+        self.save()
 
     def __str__(self):
         return self.email
