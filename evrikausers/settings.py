@@ -64,7 +64,15 @@ WSGI_APPLICATION = 'evrikausers.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-if DEBUG:
+DD = True
+
+try:
+    from . import conf
+    DD = True
+except Exception:
+    DD = False
+
+if DD:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
