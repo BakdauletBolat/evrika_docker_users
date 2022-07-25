@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    hello
+</body>
+<script>
+    fetch('http://127.0.0.1:8080/api/users/',{
+        headers: {
+            'Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0Mjc2NDAxLCJpYXQiOjE2NTg3MjQ0MDEsImp0aSI6IjkwYzRhNTNhMmEwYjRkNzI5NTExMDA1ZmE1YWRkYWQ1IiwidXNlcl9pZCI6MX0.7LkLb1PIQi_ETZk6zeZyuGQbgF-4-Js7_hbNcDXQomo'
+        }
+    })
+  .then((response) => response.json())
+  .then((data) => console.log(data));
+   
+   
+</script>
+</html>
