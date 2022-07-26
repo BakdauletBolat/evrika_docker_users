@@ -63,6 +63,11 @@ Framework: Django
 | http://127.0.0.1/api/users/{id}/ | Получение информации о пользователе | `user` |
 | http://127.0.0.1/api/users/update/ |Изменение статуса пользователя (Online, Offline) |  `admin` |
 | http://127.0.0.1/api/users/ | Получение списка пользователей |  `user` |
+| http://127.0.0.1/api/todo/ | Получение списка постов |  `admin` |
+| http://127.0.0.1/api/todo/create | Создание постов |  `admin` |
+| http://127.0.0.1/api/todo/update | Обновление статуса постов |  `admin` |
+| http://127.0.0.1/api/todo/{id} | Обновление статуса постов |  `admin` |
+| http://127.0.0.1/api/todo/delete/{id} | Удаление постов |  `admin` |
 
 
 ### Все CRUD операций доступно в Postman по ссылке **[Посмотреть](https://www.postman.com/mission-observer-91554771/workspace/evrikausers/collection/15610246-c85daf6d-ad31-4c8c-ba28-fbe63249afeb?action=share&creator=15610246)**
